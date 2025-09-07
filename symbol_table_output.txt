@@ -1,0 +1,94 @@
+LEXICAL ANALYSIS REPORT
+==================================================
+
+INPUT CODE:
+--------------------
+#include <stdio.h>
+extern int yylex();
+extern char* yytext;
+
+int main() {
+    int token;
+    while((token = yylex())) {
+        printf("Token: %d \t Lexeme: %s\n", token, yytext);
+    }
+    return 0;
+}
+
+TOKENS FOUND:
+==============================
+#include <stdio.h> -> PREPROCESSOR
+extern          -> ID
+int             -> DATATYPE
+yylex           -> ID
+(               -> ROUND_BRACKET
+)               -> ROUND_BRACKET
+;               -> SEPARATOR
+extern          -> ID
+char            -> DATATYPE
+*               -> ARITHMETIC_OP
+yytext          -> ID
+;               -> SEPARATOR
+int             -> DATATYPE
+main            -> KEYWORD
+(               -> ROUND_BRACKET
+)               -> ROUND_BRACKET
+{               -> CURLY_BRACKET
+int             -> DATATYPE
+token           -> ID
+;               -> SEPARATOR
+while           -> KEYWORD
+(               -> ROUND_BRACKET
+(               -> ROUND_BRACKET
+token           -> ID
+=               -> ASSIGN_OP
+yylex           -> ID
+(               -> ROUND_BRACKET
+)               -> ROUND_BRACKET
+)               -> ROUND_BRACKET
+)               -> ROUND_BRACKET
+{               -> CURLY_BRACKET
+printf          -> KEYWORD
+(               -> ROUND_BRACKET
+"Token: %d \t Lexeme: %s\n" -> STRING_LITERAL
+,               -> SEPARATOR
+token           -> ID
+,               -> SEPARATOR
+yytext          -> ID
+)               -> ROUND_BRACKET
+;               -> SEPARATOR
+}               -> CURLY_BRACKET
+return          -> KEYWORD
+0               -> CONSTANT
+;               -> SEPARATOR
+}               -> CURLY_BRACKET
+
+Total tokens: 45
+
+
+==================================================
+SYMBOL TABLE (TOKENS)
+==================================================
+ATTRIBUTES      TOKEN/DATATYPE      
+--------------------------------------------------
+extern          ID                  
+int             Datatype            
+yylex           ID                  
+(               Round Bracket       
+)               Round Bracket       
+;               Separator           
+char            Datatype            
+yytext          ID                  
+main            Keyword             
+{               Curly Bracket       
+token           ID                  
+while           Keyword             
+=               Assign_OP           
+printf          Keyword             
+"Token: %d \t Lexeme: %s\n" String Literal      
+,               Separator           
+}               Curly Bracket       
+return          Keyword             
+0               Constant            
+==================================================
+Total unique symbols: 19
